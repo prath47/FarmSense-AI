@@ -1,6 +1,6 @@
 import { useAppStore } from "./store";
 
-const BASE = "/api";
+const BASE = (process.env.NEXT_PUBLIC_API_URL ?? "") + "/api";
 
 function authHeaders(): HeadersInit {
   const token = useAppStore.getState().token;
