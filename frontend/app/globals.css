@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+/* ── Page & element entry animations ─────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Skeleton shimmer ─────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 0.5rem;
+}
+
+/* ── Utility animation classes ────────────────────────────────────────── */
+.animate-fade-in      { animation: fade-in 0.4s ease both; }
+.animate-slide-up     { animation: slide-up 0.4s ease both; }
+.animate-slide-in-right { animation: slide-in-right 0.35s ease both; }
+.animate-slide-in-left  { animation: slide-in-left 0.35s ease both; }
+.animate-scale-in     { animation: scale-in 0.3s ease both; }
+
+/* Staggered children — add style="--delay:Xs" to each child */
+.stagger-children > * {
+  animation-delay: var(--delay, 0s);
+}
+
+/* ── Smooth page transition wrapper ──────────────────────────────────── */
+.page-enter {
+  animation: slide-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
